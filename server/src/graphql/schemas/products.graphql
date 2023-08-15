@@ -1,0 +1,35 @@
+type Query {
+  products: [Product]
+}
+
+type Mutation {
+  addNewProduct(
+  title: String!,
+  handle: String!,
+  description: String!,
+  isAvailable: Boolean!,
+  featuredImage: String!,
+  images: [String]!,
+  price: Float!,
+  category: String!,
+  tags: [String]!,
+  inventoryCount: Int!,
+  nextShipment: String!
+  ): Product
+}
+
+type Product {
+  title: String!
+  handle: String!
+  description: String!
+  isAvailable: Boolean!
+  featuredImage: String!
+  images: [String]!
+  price: Float!
+  category: String!
+  tags: [String]!
+  inventoryCount: Int!
+  addedAt: String!
+  updatedAt: String!
+  nextShipment: String!
+}
