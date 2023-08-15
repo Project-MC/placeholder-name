@@ -1,20 +1,25 @@
+# GraphQL Schema File
+# Generates Documentation when you run the server
+# and navigate to http://localhost:8000/graphql
+
+# Compares itself against resolvers to help you find
+# differences between documentation and implementation
 type Query {
   products: [Product]
 }
 
 type Mutation {
   addNewProduct(
-  title: String!,
-  handle: String!,
-  description: String!,
-  isAvailable: Boolean!,
-  featuredImage: String!,
-  images: [String]!,
-  price: Float!,
-  category: String!,
-  tags: [String]!,
-  inventoryCount: Int!,
-  nextShipment: String!
+    title: String!
+    handle: String!
+    description: String!
+    isAvailable: Boolean!
+    featuredImage: String!
+    images: [String]!
+    price: Float!
+    category: String!
+    tags: [String]!
+    inventoryCount: Int!
   ): Product
 }
 

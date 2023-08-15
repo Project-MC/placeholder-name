@@ -1,5 +1,8 @@
 import productsModel from '../models/products.model.js';
 
+// Products Resolver Object containing all Query (read) and
+// Mutation (write) methods
+
 const productsResolver = {
   Query: {
     products: () => {
@@ -18,8 +21,7 @@ const productsResolver = {
         price: args.price,
         category: args.category,
         tags: args.tags,
-        inventoryCount: args.inventoryCount,
-        nextShipment: args.nextShipment
+        inventoryCount: args.inventoryCount
       });
     }
   }

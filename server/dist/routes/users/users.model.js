@@ -1,3 +1,4 @@
+// User class for quickly creating users
 export class User {
     constructor(firstName, email, password) {
         const date = new Date().toUTCString();
@@ -9,11 +10,13 @@ export class User {
         this.updatedAt = date;
     }
 }
+// In-Memory Users For PostMan/GraphiQL Tests  (Removed when database is set up)
 const users = [
     new User('C.J.', 'dev.cjfritz@gmail.com', 'test123'),
     new User('Matt', 'msf930@gmail.com', 'test456')
 ];
-const usersModel = {
+// 'Users Model' that will contain all product related methods, CRUD operations
+const UsersModel = {
     getAllUsers: () => users
 };
-export default usersModel;
+export default UsersModel;

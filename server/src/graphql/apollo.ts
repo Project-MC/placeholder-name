@@ -9,6 +9,10 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import app from '../app.js';
 import resolvers from './resolvers/index.resolvers.js';
 
+// Apollo Server Setup
+// Apollo is a TypeScript/GraphQL Library
+// https://www.apollographql.com/docs/apollo-server
+
 const startApolloServer = async () => {
   const typeDefs = loadFilesSync('**/*', {
     extensions: ['graphql']

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+// Setup for Future Mongo Database
 dotenv.config();
 const MONGO_URI = process.env.MONGO_URI;
 mongoose.connection.once('open', () => {

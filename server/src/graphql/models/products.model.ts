@@ -1,50 +1,89 @@
-import { NewProductParams, Product } from '../@types/products';
+import { NewProductParams } from '../@types/products';
 
-const products: Product[] = [
-  {
-    title: 'Cool Rug',
-    handle: 'cool-rug',
-    description: 'Wow, what a cool rug this is.',
-    isAvailable: true,
-    featuredImage: 'https://image.testimage.webp',
-    images: [
-      'https://image.testimage.webp',
-      'https://image2.testimage.webp',
-      'https://image3.testimage.webp'
-    ],
-    price: 49.99,
-    category: 'Rugs',
-    tags: ['rugs', 'decor', 'home'],
-    inventoryCount: 40,
-    addedAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString(),
-    nextShipment: new Date(
-      new Date().getMilliseconds() + 604800000
-    ).toUTCString()
-  },
-  {
-    title: 'Cooler Rug',
-    handle: 'cooler-rug',
-    description: 'Wow, what an even cooler rug this is.',
-    isAvailable: true,
-    featuredImage: 'https://image.testimage.webp',
-    images: [
-      'https://image.testimage.webp',
-      'https://image2.testimage.webp',
-      'https://image3.testimage.webp'
-    ],
-    price: 59.99,
-    category: 'Rugs',
-    tags: ['rugs', 'decor', 'home'],
-    inventoryCount: 20,
-    addedAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString(),
-    nextShipment: new Date(
-      new Date().getMilliseconds() + 1209600000
-    ).toUTCString()
+// Product Class for quickly constructing new products later on
+class Product {
+  title: string;
+  handle: string;
+  description: string;
+  isAvailable: boolean;
+  featuredImage: string;
+  images: string[];
+  price: number;
+  category: string;
+  tags: string[];
+  inventoryCount: number;
+  addedAt: string;
+  updatedAt: string;
+  nextShipment: string;
+
+  constructor(
+    title: string,
+    handle: string,
+    description: string,
+    isAvailable: boolean,
+    featuredImage: string,
+    images: string[],
+    price: number,
+    category: string,
+    tags: string[],
+    inventoryCount: number
+  ) {
+    const date = new Date();
+    const nextShipmentDate = new Date(date.getMilliseconds() + 1209600000);
+
+    this.title = title;
+    this.handle = handle;
+    this.description = description;
+    this.isAvailable = isAvailable;
+    this.featuredImage = featuredImage;
+    this.images = images;
+    this.price = price;
+    this.category = category;
+    this.tags = tags;
+    this.inventoryCount = inventoryCount;
+    this.addedAt = date.toUTCString();
+    this.updatedAt = date.toUTCString();
+    this.nextShipment = nextShipmentDate.toUTCString();
   }
+}
+
+// In-Memory Products For PostMan/GraphiQL Tests  (Removed when database is set up)
+const products: Product[] = [
+  new Product(
+    'Cool Rug',
+    'cool-rug',
+    'Wow, what a cool rug this is.',
+    true,
+    'https://image.testimage.webp',
+    [
+      'https://image.testimage.webp',
+      'https://image2.testimage.webp',
+      'https://image3.testimage.webp'
+    ],
+    49.99,
+    'Rugs',
+    ['rugs', 'decor', 'home'],
+    40
+  ),
+  new Product(
+    'Cooler Rug',
+    'cooler-rug',
+    'Wow, what an even cooler rug this is.',
+    true,
+    'https://image.testimage.webp',
+    [
+      'https://image.testimage.webp',
+      'https://image2.testimage.webp',
+      'https://image3.testimage.webp'
+    ],
+    59.99,
+    'Rugs',
+    ['rugs', 'decor', 'home'],
+    20
+  )
 ];
 
+// 'Add New Product' method for the Products Model
 const addNewProduct = ({
   title,
   handle,
@@ -55,10 +94,9 @@ const addNewProduct = ({
   price,
   category,
   tags,
-  inventoryCount,
-  nextShipment
+  inventoryCount
 }: NewProductParams) => {
-  const product = {
+  const product = new Product(
     title,
     handle,
     description,
@@ -68,19 +106,16 @@ const addNewProduct = ({
     price,
     category,
     tags,
-    inventoryCount,
-    addedAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString(),
-    nextShipment
-  };
+    inventoryCount
+  );
   products.push(product);
   return product;
 };
 
-const productsModel = {
-  products,
+// 'Products Model' that will contain all product related methods, CRUD operations
+const ProductsModel = {
   getAllProducts: () => products,
   addNewProduct
 };
 
-export default productsModel;
+export default ProductsModel;
