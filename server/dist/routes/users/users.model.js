@@ -1,20 +1,17 @@
-const users = [
-    {
-        firstName: 'C.J.',
-        email: 'dev.cjfritz@gmail.com',
-        password: 'test123',
-        token: '',
-        createdAt: new Date().toUTCString(),
-        updatedAt: new Date().toUTCString()
-    },
-    {
-        firstName: 'Matt',
-        email: 'dev.matt@gmail.com',
-        password: 'test123',
-        token: '',
-        createdAt: new Date().toUTCString(),
-        updatedAt: new Date().toUTCString()
+export class User {
+    constructor(firstName, email, password) {
+        const date = new Date().toUTCString();
+        this.firstName = firstName;
+        this.email = email;
+        this.password = password;
+        this.token = '';
+        this.createdAt = date;
+        this.updatedAt = date;
     }
+}
+const users = [
+    new User('C.J.', 'dev.cjfritz@gmail.com', 'test123'),
+    new User('Matt', 'msf930@gmail.com', 'test456')
 ];
 const usersModel = {
     getAllUsers: () => users

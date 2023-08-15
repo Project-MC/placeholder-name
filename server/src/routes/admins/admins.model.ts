@@ -1,22 +1,14 @@
-import { Admin } from "../@types/admins";
+import { User } from '../users/users.model.js';
+
+class Admin extends User {
+  constructor(firstName: string, email: string, password: string) {
+    super(firstName, email, password);
+  }
+}
 
 const admins: Admin[] = [
-  {
-    firstName: 'C.J.',
-    email: 'dev.cjfritz@gmail.com',
-    password: 'test123',
-    token: '',
-    createdAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString()
-  },
-  {
-    firstName: 'Matt',
-    email: 'dev.matt@gmail.com',
-    password: 'test123',
-    token: '',
-    createdAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString()
-  }
+  new Admin('C.J.', 'dev.cjfritz@gmail.com', 'test123'),
+  new Admin('Matt', 'msf930@gmail.com', 'test456')
 ];
 
 const adminsModel = {

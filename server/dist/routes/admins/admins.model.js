@@ -1,20 +1,12 @@
-const admins = [
-    {
-        firstName: 'C.J.',
-        email: 'dev.cjfritz@gmail.com',
-        password: 'test123',
-        token: '',
-        createdAt: new Date().toUTCString(),
-        updatedAt: new Date().toUTCString()
-    },
-    {
-        firstName: 'Matt',
-        email: 'dev.matt@gmail.com',
-        password: 'test123',
-        token: '',
-        createdAt: new Date().toUTCString(),
-        updatedAt: new Date().toUTCString()
+import { User } from '../users/users.model.js';
+class Admin extends User {
+    constructor(firstName, email, password) {
+        super(firstName, email, password);
     }
+}
+const admins = [
+    new Admin('C.J.', 'dev.cjfritz@gmail.com', 'test123'),
+    new Admin('Matt', 'msf930@gmail.com', 'test456')
 ];
 const adminsModel = {
     getAllAdmins: () => admins

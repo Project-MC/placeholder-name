@@ -1,22 +1,26 @@
-import { User } from '../@types/users';
+export class User {
+  firstName: string;
+  email: string;
+  password: string;
+  token: string;
+  createdAt: string;
+  updatedAt: string;
+
+  constructor(firstName: string, email: string, password: string) {
+    const date = new Date().toUTCString();
+
+    this.firstName = firstName;
+    this.email = email;
+    this.password = password;
+    this.token = '';
+    this.createdAt = date;
+    this.updatedAt = date;
+  }
+}
 
 const users: User[] = [
-  {
-    firstName: 'C.J.',
-    email: 'dev.cjfritz@gmail.com',
-    password: 'test123',
-    token: '',
-    createdAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString()
-  },
-  {
-    firstName: 'Matt',
-    email: 'dev.matt@gmail.com',
-    password: 'test123',
-    token: '',
-    createdAt: new Date().toUTCString(),
-    updatedAt: new Date().toUTCString()
-  }
+  new User('C.J.', 'dev.cjfritz@gmail.com', 'test123'),
+  new User('Matt', 'msf930@gmail.com', 'test456')
 ];
 
 const usersModel = {
